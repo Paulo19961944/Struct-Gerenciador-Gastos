@@ -31,22 +31,22 @@ public class GerenciadorAction extends Action {
         TransacaoForm transacaoForm = (TransacaoForm) form;
         String action = request.getParameter("action");
 
-        if ("adicionar".equals(action)) {
-            // Adicionar nova transação
-            Transacao transacao = new Transacao();
-            transacao.setDescricao(transacaoForm.getDescricao());
-            transacao.setValor(Double.parseDouble(transacaoForm.getValor()));
-            transacao.setTipo(transacaoForm.getTipo());
-            transacao.setCategoria(transacaoForm.getCategoria());
-            
-            // Converter data
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Date data = sdf.parse(transacaoForm.getData());
-            transacao.setData(data);
-            
-            gerenciador.adicionarTransacao(transacao);
-            
-        } else if ("remover".equals(action)) {
+if ("adicionar".equals(action)) {
+    // Adicionar nova transação usando Builder pattern
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    Date data = sdf.parse(transacaoForm.getData());
+
+    Transacao transacao = new Transacao.Builder()
+        .descricao(transacaoForm.getDescricao())
+        .valor(Double.parseDouble(transacaoForm.getValor()))
+        .tipo(transacaoForm.getTipo())
+        .categoria(transacaoForm.getCategoria())
+        .data(data)
+        .build();
+
+    gerenciador.adicionarTransacao(transacao);
+
+} else if ("remover".equals(action)) {
             // Remover transação
             String idParam = request.getParameter("id");
             if (idParam != null && !idParam.isEmpty()) {

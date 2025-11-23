@@ -10,33 +10,67 @@ public class Transacao {
     private Date data;
     private String categoria;
 
-    public Transacao() {}
-
-    public Transacao(int id, String descricao, double valor, String tipo, Date data, String categoria) {
-        this.id = id;
-        this.descricao = descricao;
-        this.valor = valor;
-        this.tipo = tipo;
-        this.data = data;
-        this.categoria = categoria;
+    private Transacao(Builder builder) {
+        this.id = builder.id;
+        this.descricao = builder.descricao;
+        this.valor = builder.valor;
+        this.tipo = builder.tipo;
+        this.data = builder.data;
+        this.categoria = builder.categoria;
     }
 
-    // Getters e Setters
+    // Getters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
     public String getDescricao() { return descricao; }
-    public void setDescricao(String descricao) { this.descricao = descricao; }
-
     public double getValor() { return valor; }
-    public void setValor(double valor) { this.valor = valor; }
-
     public String getTipo() { return tipo; }
-    public void setTipo(String tipo) { this.tipo = tipo; }
-
     public Date getData() { return data; }
-    public void setData(Date data) { this.data = data; }
-
     public String getCategoria() { return categoria; }
-    public void setCategoria(String categoria) { this.categoria = categoria; }
+
+    public static class Builder {
+        private int id;
+        private String descricao;
+        private double valor;
+        private String tipo;
+        private Date data;
+        private String categoria;
+
+        public Builder() {}
+
+        public Builder id(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder descricao(String descricao) {
+            this.descricao = descricao;
+            return this;
+        }
+
+        public Builder valor(double valor) {
+            this.valor = valor;
+            return this;
+        }
+
+        public Builder tipo(String tipo) {
+            this.tipo = tipo;
+            return this;
+        }
+
+        public Builder data(Date data) {
+            this.data = data;
+            return this;
+        }
+
+        public Builder categoria(String categoria) {
+            this.categoria = categoria;
+            return this;
+        }
+
+        public Transacao build() {
+            return new Transacao(this);
+        }
+    }
 }
