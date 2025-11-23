@@ -23,7 +23,7 @@
             <version>2.5</version>
             <scope>provided</scope>
         </dependency>
-        
+
         <!-- JSP API -->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
@@ -31,90 +31,100 @@
             <version>2.2</version>
             <scope>provided</scope>
         </dependency>
-        
+
         <!-- Struts 1.3 Core -->
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts-core</artifactId>
             <version>${struts.version}</version>
         </dependency>
-        
+
         <!-- Struts 1.3 Taglib -->
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts-taglib</artifactId>
             <version>${struts.version}</version>
         </dependency>
-        
+
         <!-- Struts 1.3 Extras -->
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts-extras</artifactId>
             <version>${struts.version}</version>
         </dependency>
-        
+
+        <!-- JSTL - Mantenha apenas esta -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <!-- REMOVA esta dependência do 'standard' pois pode causar conflito -->
+        <!--
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        -->
+
         <!-- Apache Commons -->
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.4</version>
         </dependency>
-        
+
         <dependency>
             <groupId>commons-chain</groupId>
             <artifactId>commons-chain</artifactId>
             <version>1.2</version>
         </dependency>
-        
+
         <dependency>
             <groupId>commons-digester</groupId>
             <artifactId>commons-digester</artifactId>
             <version>2.1</version>
         </dependency>
-        
+
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>1.4</version>
         </dependency>
-        
+
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.2</version>
         </dependency>
-        
+
         <dependency>
             <groupId>commons-validator</groupId>
             <artifactId>commons-validator</artifactId>
             <version>1.7</version>
         </dependency>
-        
-        <!-- JSTL -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>taglibs</groupId>
-            <artifactId>standard</artifactId>
-            <version>1.1.2</version>
-        </dependency>
-        
+
         <!-- Outras dependências do Struts -->
         <dependency>
             <groupId>antlr</groupId>
             <artifactId>antlr</artifactId>
             <version>2.7.7</version>
         </dependency>
-        
+
         <dependency>
             <groupId>oro</groupId>
             <artifactId>oro</artifactId>
             <version>2.0.8</version>
         </dependency>
+        
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
         
         <dependency>
             <groupId>bsf</groupId>
@@ -154,4 +164,13 @@
             <url>https://repo.maven.apache.org/maven2</url>
         </repository>
     </repositories>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>1.2</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
