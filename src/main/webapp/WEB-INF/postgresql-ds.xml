@@ -1,0 +1,14 @@
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema">
+    <datasource jndi-name="java:jboss/datasources/PostgresDS" pool-name="PostgresDS" enabled="true" use-java-context="true">
+        <connection-url>jdbc:postgresql://localhost:5432/gerenciador_gastos</connection-url>
+        <driver-class>org.postgresql.Driver</driver-class>
+        <driver>GerenciadordeGastos.war_org.postgresql.Driver_42_6</driver>
+        <security>
+            <user-name>postgres</user-name>
+            <password>postgres</password>
+        </security>
+        <validation>
+            <check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
+        </validation>
+    </datasource>
+</datasources>
