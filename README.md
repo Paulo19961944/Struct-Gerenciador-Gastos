@@ -92,7 +92,8 @@ Um container PostgreSQL pronto para uso esta definido no arquivo `docker-compose
    ```
 
    O container expoe a porta `5432`, cria a base `gerenciador_gastos` e utiliza usuario/senha `postgres`.
-2. Ajuste o WildFly (ou outro servidor) para usar a URL `jdbc:postgresql://localhost:5432/gerenciador_gastos` com as mesmas credenciais, conforme o datasource `PostgresDS`.
+2. O `persistence.xml` conecta diretamente via JDBC ao Postgres (RESOURCE_LOCAL) usando URL `jdbc:postgresql://localhost:5432/gerenciador_gastos` e usuario/senha `postgres`. Basta manter o container ativo na porta `5432` antes do deploy no WildFly.
+3. Se o WildFly ainda apontar para o ExampleDS/H2, apague o WAR antigo em `standalone/deployments` e gere novamente.
 
 ### **Desenvolvimento**
 
