@@ -1,63 +1,42 @@
 package com.phsitedeveloper.gerenciadordegastos.model;
 
-import java.util.ArrayList;
+import com.phsitedeveloper.gerenciadordegastos.repository.TransacaoRepository;
+
 import java.util.List;
 
 public class GerenciadorFinanceiro {
-    private List<Transacao> transacoes;
-    private static int nextId = 1;
+    private final TransacaoRepository repository;
 
     public GerenciadorFinanceiro() {
-        this.transacoes = new ArrayList<>();
+        this.repository = new TransacaoRepository();
     }
 
-    public void adicionarTransacao(Transacao transacao) {
-        transacao.setId(nextId++);
-        transacoes.add(transacao);
+    public Transacao adicionarTransacao(Transacao transacao) {
+        return repository.salvar(transacao);
     }
 
-    public void removerTransacao(int id) {
-        transacoes.removeIf(t -> t.getId() == id);
+    public void removerTransacao(Long id) {
+        repository.remover(id);
     }
 
     public List<Transacao> getTransacoes() {
-        return new ArrayList<>(transacoes);
+        return repository.listarTodas();
     }
 
     public List<Transacao> getReceitas() {
-        List<Transacao> receitas = new ArrayList<>();
-        for (Transacao t : transacoes) {
-            if ("RECEITA".equals(t.getTipo())) {
-                receitas.add(t);
-            }
-        }
-        return receitas;
+        return repository.listarPorTipo("RECEITA");
     }
 
     public List<Transacao> getDespesas() {
-        List<Transacao> despesas = new ArrayList<>();
-        for (Transacao t : transacoes) {
-            if ("DESPESA".equals(t.getTipo())) {
-                despesas.add(t);
-            }
-        }
-        return despesas;
+        return repository.listarPorTipo("DESPESA");
     }
 
     public double getTotalReceitas() {
-        double total = 0;
-        for (Transacao t : getReceitas()) {
-            total += t.getValor();
-        }
-        return total;
+        return repository.somarPorTipo("RECEITA");
     }
 
     public double getTotalDespesas() {
-        double total = 0;
-        for (Transacao t : getDespesas()) {
-            total += t.getValor();
-        }
-        return total;
+        return repository.somarPorTipo("DESPESA");
     }
 
     public double getSaldo() {
