@@ -1,14 +1,26 @@
 package com.phsitedeveloper.gerenciadordegastos.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "transacao")
 public class Transacao {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String descricao;
     private double valor;
     private String tipo; // "RECEITA" ou "DESPESA"
+
+    @Temporal(TemporalType.DATE)
     private Date data;
+
     private String categoria;
+
+    public Transacao() {
+    }
 
     private Transacao(Builder builder) {
         this.id = builder.id;
@@ -20,8 +32,8 @@ public class Transacao {
     }
 
     // Getters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getDescricao() { return descricao; }
     public double getValor() { return valor; }
@@ -30,7 +42,7 @@ public class Transacao {
     public String getCategoria() { return categoria; }
 
     public static class Builder {
-        private int id;
+        private Long id;
         private String descricao;
         private double valor;
         private String tipo;
@@ -39,7 +51,7 @@ public class Transacao {
 
         public Builder() {}
 
-        public Builder id(int id) {
+        public Builder id(Long id) {
             this.id = id;
             return this;
         }
