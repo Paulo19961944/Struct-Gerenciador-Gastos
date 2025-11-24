@@ -55,6 +55,7 @@ GerenciadordeGastos/
 - Java 11 ou superior
 - Apache Maven 3.6+
 - Servidor de Aplicacao (WildFly, Tomcat, GlassFish)
+- Docker (para subir o banco Postgres via docker-compose)
 
 ### **Instalacao**
 
@@ -79,6 +80,19 @@ GerenciadordeGastos/
     
 4. **Deploy no servidor**
     - Copie o arquivo `target/GerenciadordeGastos.war` para o diretorio de deploy do seu servidor
+
+### **Banco de Dados com Docker**
+
+Um container PostgreSQL pronto para uso esta definido no arquivo `docker-compose.yml` na raiz do projeto.
+
+1. Suba o banco de dados:
+
+   ```bash
+   docker compose up -d
+   ```
+
+   O container expoe a porta `5432`, cria a base `gerenciador_gastos` e utiliza usuario/senha `postgres`.
+2. O `persistence.xml` agora abre a conexao JDBC direto com o PostgreSQL (driver/url/usuario/senha) usando `jdbc:postgresql://localhost:5432/gerenciador_gastos` com `postgres`/`postgres`. Basta manter o container ativo para que a aplicacao suba sem tentar usar o H2 de exemplo do WildFly.
 
 ### **Desenvolvimento**
 
