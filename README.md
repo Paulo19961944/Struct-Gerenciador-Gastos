@@ -92,7 +92,7 @@ Um container PostgreSQL pronto para uso esta definido no arquivo `docker-compose
    ```
 
    O container expoe a porta `5432`, cria a base `gerenciador_gastos` e utiliza usuario/senha `postgres`.
-2. O `persistence.xml` esta configurado com conexao JDBC direta para `jdbc:postgresql://localhost:5432/gerenciador_gastos` usando usuario/senha `postgres`/`postgres`. Certifique-se apenas de que o container esta rodando e acessivel em `localhost:5432`.
+2. O `persistence.xml` agora abre a conexao JDBC direto com o PostgreSQL (driver/url/usuario/senha) usando `jdbc:postgresql://localhost:5432/gerenciador_gastos` com `postgres`/`postgres`. Basta manter o container ativo para que a aplicacao suba sem tentar usar o H2 de exemplo do WildFly.
 
 ### **Desenvolvimento**
 
