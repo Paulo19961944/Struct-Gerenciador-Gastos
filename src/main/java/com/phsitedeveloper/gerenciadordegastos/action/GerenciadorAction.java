@@ -50,7 +50,7 @@ if ("adicionar".equals(action)) {
             // Remover transação
             String idParam = request.getParameter("id");
             if (idParam != null && !idParam.isEmpty()) {
-                int id = Integer.parseInt(idParam);
+                Long id = Long.parseLong(idParam);
                 gerenciador.removerTransacao(id);
             }
         }
