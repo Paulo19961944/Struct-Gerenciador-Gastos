@@ -92,7 +92,7 @@ Um container PostgreSQL pronto para uso esta definido no arquivo `docker-compose
    ```
 
    O container expoe a porta `5432`, cria a base `gerenciador_gastos` e utiliza usuario/senha `postgres`.
-2. O `persistence.xml` agora usa o datasource JTA `java:jboss/datasources/PostgresDS`, que e provisionado pelo arquivo `src/main/webapp/WEB-INF/postgresql-ds.xml`. Certifique-se apenas de que o container PostgreSQL esta rodando em `localhost:5432` com usuario/senha `postgres`/`postgres` para que o WildFly consiga abrir a conexao.
+2. O `persistence.xml` esta configurado com conexao JDBC direta para `jdbc:postgresql://localhost:5432/gerenciador_gastos` usando usuario/senha `postgres`/`postgres`. Certifique-se apenas de que o container esta rodando e acessivel em `localhost:5432`.
 
 ### **Desenvolvimento**
 
