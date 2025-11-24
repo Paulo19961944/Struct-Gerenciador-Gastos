@@ -92,7 +92,7 @@ Um container PostgreSQL pronto para uso esta definido no arquivo `docker-compose
    ```
 
    O container expoe a porta `5432`, cria a base `gerenciador_gastos` e utiliza usuario/senha `postgres`.
-2. O `persistence.xml` aponta para o datasource JTA `java:jboss/datasources/PostgresDS`, que por sua vez usa a mesma URL/credenciais do container (`postgres`/`postgres`). Certifique-se apenas de que o container está rodando e acessível em `localhost:5432`.
+2. O `persistence.xml` esta configurado com conexao JDBC direta para `jdbc:postgresql://localhost:5432/gerenciador_gastos` usando usuario/senha `postgres`/`postgres`. Certifique-se apenas de que o container esta rodando e acessivel em `localhost:5432`.
 
 ### **Desenvolvimento**
 
